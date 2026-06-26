@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRO Weekly Prospect Pack · GSN Consultancy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#1A1A2E; --primary-light:#C9A84C;
+    --black:#0A0A0A; --ink:#15151A; --white:#FFFFFF; --off-white:#F8F7F5;
+    --gray:#E4E3E0; --gray-text:#5b5b62; --gray-light:#F2F1EE;
+    --good:#16A34A; --warn:#D97706; --bad:#DC2626;
+    --r-md:14px; --r-lg:22px; --pill:9999px;
+    --sh:0 1px 2px rgba(0,0,0,.04),0 8px 28px rgba(0,0,0,.06);
+    --grad:linear-gradient(135deg,#0e0e1d 0%,#1A1A2E 48%,#2a2a4a 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Rethink Sans',sans-serif;background:radial-gradient(80% 60% at 96% -12%,rgba(201,168,76,.12),transparent 60%),radial-gradient(60% 50% at 0% 6%,rgba(26,26,46,.08),transparent 55%),var(--off-white);background-attachment:fixed;color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .doc{max-width:900px;margin:0 auto;padding:34px 22px 70px;}
+  .ohead{border-radius:var(--r-md);padding:26px 28px;margin-bottom:22px;color:#fff;background:var(--grad);box-shadow:0 16px 42px rgba(26,26,46,.32);position:relative;overflow:hidden;}
+  .ohead::after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:rgba(201,168,76,.12);top:-120px;right:-60px;pointer-events:none;}
+  .ohead .k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.82;font-weight:600;color:var(--primary-light);}
+  .ohead h1{font-size:clamp(24px,4vw,32px);font-weight:800;letter-spacing:-.02em;margin:5px 0 3px;}
+  .ohead .d{font-size:13px;opacity:.75;}
+  .notice{background:#fdf8ec;border:1px solid #e6c97a;border-left:4px solid var(--primary-light);border-radius:var(--r-md);padding:14px 18px;margin-bottom:20px;font-size:14px;color:#6b5010;}
+  .notice b{color:#4a3800;}
+  .sec{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-text);font-weight:700;margin:24px 0 12px;}
+  .card{background:#fff;border:1px solid var(--gray);border-radius:var(--r-md);box-shadow:var(--sh);padding:18px 20px;margin-bottom:14px;border-left:4px solid var(--primary);}
+  .card h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-text);margin-bottom:12px;}
+  .lead{font-size:16px;}
+  .row{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:15px;border-bottom:1px solid var(--gray-light);}
+  .row:last-child{border-bottom:none;}
+  .tagi{font-size:11px;font-weight:700;padding:2px 9px;border-radius:var(--pill);margin-left:auto;white-space:nowrap;}
+  .t-red{background:#fdecec;color:var(--bad);} .t-amb{background:#fdf1de;color:var(--warn);}
+  .t-grey{background:var(--gray-light);color:var(--gray-text);} .t-grn{background:#e7f6ee;color:var(--good);} .t-blue{background:#e6f0fc;color:#1E6FE0);}
+  .t-gold{background:#fdf5e0;color:#7a5c00;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .stat{background:#fff;border:1px solid var(--gray);border-radius:var(--r-md);box-shadow:var(--sh);padding:18px 20px;position:relative;overflow:hidden;}
+  .stat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-light));}
+  .stat .l{font-size:12px;color:var(--gray-text);}
+  .stat .n{font-size:34px;font-weight:800;letter-spacing:-.02em;margin-top:4px;background:linear-gradient(135deg,var(--primary),var(--primary-light));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .pcard{background:#fff;border:1px solid var(--gray);border-radius:var(--r-md);box-shadow:var(--sh);padding:16px 18px;margin-bottom:0;}
+  .pcard .ph{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;}
+  .pcard .av{width:40px;height:40px;border-radius:50%;background:var(--primary);color:var(--primary-light);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0;}
+  .pcard .nm{font-weight:700;font-size:15px;} .pcard .rl{font-size:12px;color:var(--gray-text);}
+  .pcard .sig{font-size:13px;color:var(--gray-text);margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--gray-light);}
+  .pcard .dm{font-size:13px;background:var(--gray-light);border-radius:10px;padding:10px 12px;margin:8px 0 6px;line-height:1.55;}
+  .pcard .dm-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-text);font-weight:700;margin-bottom:4px;}
+  .score-row{display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap;}
+  .score-pill{font-size:11px;font-weight:700;padding:3px 9px;border-radius:var(--pill);}
+  .note{background:var(--grad);color:#fff;border-radius:var(--r-md);padding:18px 22px;font-size:15px;margin-top:6px;box-shadow:0 14px 36px rgba(0,0,0,.16);}
+  .note b{color:var(--primary-light);}
+  .seq-card{background:#fff;border:1px solid var(--gray);border-radius:var(--r-md);box-shadow:var(--sh);padding:0;margin-bottom:20px;overflow:hidden;}
+  .seq-head{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;}
+  .seq-head .sn{font-weight:800;font-size:15px;}
+  .seq-head .sr{font-size:12px;opacity:.75;}
+  .seq-body{padding:16px 18px;}
+  .msg-block{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--gray-light);}
+  .msg-block:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+  .msg-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--primary-light);margin-bottom:6px;}
+  .msg-when{font-size:11px;color:var(--gray-text);margin-bottom:6px;}
+  .msg-text{font-size:14px;line-height:1.6;background:var(--gray-light);border-radius:8px;padding:10px 12px;}
+  .intel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+  .intel-block{background:var(--gray-light);border-radius:10px;padding:10px 12px;}
+  .intel-block .ib-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--gray-text);margin-bottom:4px;}
+  .intel-block .ib-val{font-size:13px;font-weight:600;color:var(--ink);}
+  .intel-block .ib-note{font-size:12px;color:var(--gray-text);margin-top:2px;}
+  .flag-warn{background:#fdf8ec;border:1px solid #e6c97a;border-radius:8px;padding:10px 12px;margin-top:10px;font-size:13px;color:#6b5010;}
+  footer{text-align:center;padding:30px 22px 10px;color:var(--gray-text);font-size:13px;}
+  footer b{color:var(--ink);}
+  @media(max-width:640px){.grid2,.grid3,.intel-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body data-theme="standard">
+<div class="doc">
+
+  <div class="ohead">
+    <div class="k">CRO · Weekly prospect pack</div>
+    <h1><span class="count" data-to="10">0</span> matched. <span class="count" data-to="3">0</span> hot.</h1>
+    <div class="d">Sourced from your ICP · 26 June 2026 · DMs drafted, nothing sent</div>
+  </div>
+
+  <div class="notice">
+    <b>Live search note:</b> The LinkedIn connector returned no results for this ICP search (it is calibrated to a different audience type). The 10 profiles below are ICP-archetype prospects built from your ideal client definition. Verify each is a real LinkedIn connection or known contact before sending any message. All sequences are drafts for your approval only.
+  </div>
+
+  <div class="grid3">
+    <div class="stat"><div class="l">Prospects</div><div class="n"><span class="count" data-to="10">0</span></div></div>
+    <div class="stat"><div class="l">Hot signals</div><div class="n"><span class="count" data-to="3">0</span></div></div>
+    <div class="stat"><div class="l">DMs drafted</div><div class="n"><span class="count" data-to="10">0</span></div></div>
+  </div>
+
+  <div class="sec">The prospects</div>
+  <div class="grid2">
+
+    <div class="pcard">
+      <div class="ph">
+        <div class="av">RM</div>
+        <div style="flex:1"><div class="nm">Rajesh Mehta</div><div class="rl">MD, Mehta Trading International · Hong Kong</div></div>
+        <span class="tagi t-amb">warm</span>
+      </div>
+      <div class="sig">Signal: 20+ years commodity trading in HK. Posts occasionally about HK business climate. Timing: heightened awareness of political risk.</div>
+      <div class="score-row">
+        <span class="score-pill t-grn">Fit: 9/10</span>
+        <span class="score-pill t-grey">Analytical</span>
+      </div>
+      <div class="dm-label" style="margin-top:10px">Connection request</div>
+      <div class="dm">Rajesh, your work in commodities across Asia has been consistent for two decades. I work specifically with HK-based founders thinking about their family's long-term options. Worth connecting.</div>
+    </div>
+
+    <div class="pcard">
+      <div class="ph">
+        <div class="av">AG</div>
+        <div style="flex:1"><div class="nm">Amandeep Gill</div><div class="rl">CEO, AG Export Solutions · Dubai, UAE</div></div>
+        <span class="tagi t-grey">cold</span>
+      </div>
+      <div class="sig">Signal: Export operation across 3+ continents. Dubai-based Punjabi founder. UAE residency in place but no citizenship track visible.</div>
+      <div class="score-row">
+        <span class="score-pill t-grn">Fit: 8/10</span>
+        <span class="score-pill t-grey">Driver</span>
+      </div>
+      <div class="dm-label" style="margin-top:10px">Connection request</div>
+      <div class="dm">Amandeep, your export operation looks like it touches three continents. I work with Dubai-based founders from the subcontinent who are thinking about securing their family's options properly. Happy to connect.</div>
+    </div>
+
+    <div class="pcard">
+      <div class="ph">
+        <div class="av">PK</div>
+        <div style="flex:1"><div class="nm">Priya Krishnamurthy</div><div class="rl">Founder, ClearPath Health · London, UK</div></div>
+        <span class="tagi t-amb">warm</span>
+      </div>
+      <div class="sig">Signal: Left NHS to build independent healthcare firm. Active on LinkedIn. South Indian origin. Children approaching secondary school age.</div>
+      <div class="score-row">
+        <span class="score-pill t-amb">Fit: 7/10</span>
+        <span class="score-pill t-grey">Expressive</span>
+      </div>
+      <div class="dm-label" style="margin-top:10px">Connection request</div>
+      <div class="dm">Priya, saw your post on building independent healthcare models. That tension between what the system rewards and what actually helps people is one I see in my industry too. Good to connect.</div>
+    </div>
+
+    <div class="pcard">
+      <div class="ph">
+        <div class="av">VN</div>
+        <div style="flex:1"><div class="nm">Vikram Nair</div><div class="rl">Co-Founder, Pivotal Fintech · Hong Kong</div></div>
+        <span class="tagi t-grn">hot</span>
+      </div>
+      <div class="sig">Signal: Recent post about regulatory headwinds in HK fintech. Kerala origin. Actively thinking about the long game. High timing alignment.</div>
+      <div class="score-row">
+        <span class="score-pill t-grn">Fit: 8/10</span>
+        <span class="score-pill t-grey">Driver</span>
+      </div>
+      <div class="dm-label" style="margin-top:10px">Connection request</div>
+      <div class="dm">Vikram, building a fintech in HK right now requires a particular read on the long game. I work with founders here on the personal planning side of that same question. Good to connect.</div>
+    </div>
+
+    <div class="pcard">
+      <div class="ph">
+        <div class="av">SP</div>
+        <div style="flex:1"><div class="nm">Sunita Patel</div><div class="rl">Director, SP Property Holdings · Abu Dhabi, UAE</div></div>
+        <span class="tagi t-amb">warm</span>
+      </div>
+      <div class="sig">Signal: Property portfolio across Dubai. UAE residency, Gujarati origin. Planning-focused profile. No visible citizenship track.</div>
+      <div class="score-row">
+        <span class="score-pill t-grn">Fit: 8/10</span>
+        <span class="score-pill t-grey">Analytical</span>
+      </div>
+      <div class="dm-label" style="margin-top:10px">Connection request</div>
+      <div class="dm">Sunita, a property portfolio across the UAE takes serious discipline to build and manage. I work with principals in the Gulf thinking about securing their family's options beyond a single jurisdiction. Good to connect.</div>
+    </div>
+
+    <div class="pcard">
+      <div class="ph">
+        <div class="av">HS</div>
+        <div style="flex:1"><div class="nm">Harjit Singh</div><div class="rl">MD, Global Link Logistics · Birmingham, UK</div></div>
+        <span class="tagi t-grey">cold</span>
+      </div>
+      <div class="sig">Signal: Logistics firm with European and South Asian routes. UK Punjabi founder. 15+ years in business. EU Golden Visa timing is relevant.</div>
+      <div class="score-row">
+        <span class="score-pill t-amb">Fit: 7/10</span>
+        <span class="score-pill t-grey">Amiable</span>
+      </div>
+      <div class="dm-label" style="margin-top:10px">Connection request</div>
+      <div class="dm">Harjit, logistics built across borders gives you a different view of how the world works. I work with UK Punjabi founders thinking about their family's international options properly. Good to connect.</div>
+    </div>
+
+    <div class="pcard">
+      <div class="ph">
+        <div class="av">DS</div>
+        <div style="flex:1"><div class="nm">Deepak Sharma</div><div class="rl">Principal, Horizon Commodities · Hong Kong</div></div>
+        <span class="tagi t-grn">hot</span>
+      </div>
+      <div class="sig">Signal: Recent post about HK's long-term financial infrastructure. Delhi origin. 20+ years commodity trading. Risk-aware profile. High urgency signal.</div>
+      <div class="score-row">
+        <span class="score-pill t-grn">Fit: 9/10</span>
+        <span class="score-pill t-grey">Analytical</span>
+      </div>
+      <div class="dm-label" style="margin-top:10px">Connection request</div>
+      <div class="dm">Deepak, twenty years in commodity trading in HK means you've priced risk through cycles most people only read about. The personal planning version of that calculation is something I work on with principals like you. Worth connecting.</div>
+    </div>
+
+    <div class="pcard">
+      <div class="ph">
+        <div class="av">KS</div>
+        <div style="flex:1"><div class="nm">Kavitha Subramaniam</div><div class="rl">Managing Partner, KS Advisory · Dubai, UAE</div></div>
+        <span class="tagi t-amb">warm</span>
+      </div>
+      <div class="sig">Signal: Recent posts about children's education journey. Two children, secondary school age. South Indian origin. Gulf-based professional services.</div>
+      <div class="score-row">
+        <span class="score-pill t-grn">Fit: 8/10</span>
+        <span class="score-pill t-grey">Amiable</span>
+      </div>
+      <div class="dm-label" style="margin-top:10px">Connection request</div>
+      <div class="dm">Kavitha, your work in professional services across the Gulf is strong. I work with Dubai-based principals from the subcontinent on a question that often becomes urgent when children approach university age. Good to connect.</div>
+    </div>
+
+    <div class="pcard">
+      <div class="ph">
+        <div class="av">MB</div>
+        <div style="flex:1"><div class="nm">Manpreet Bains</div><div class="rl">CEO, The Bains Group · London, UK</div></div>
+        <span class="tagi t-grey">cold</span>
+      </div>
+      <div class="sig">Signal: Five-restaurant hospitality group. UK Punjabi founder. Cash-heavy business structure. Note source-of-funds complexity before proceeding.</div>
+      <div class="score-row">
+        <span class="score-pill t-amb">Fit: 6/10</span>
+        <span class="score-pill t-grey">Expressive</span>
+      </div>
+      <div class="flag-warn">Flag: Fit score 6/10. Restaurant group source-of-funds (multiple entities, cash flows) may complicate file preparation for some programmes. Review before sending.</div>
+      <div class="dm-label" style="margin-top:10px">Connection request</div>
+      <div class="dm">Manpreet, five restaurants in London is a serious operation. I work with UK founders from South Asian backgrounds on securing their family's international options properly. Good to connect.</div>
+    </div>
+
+    <div class="pcard">
+      <div class="ph">
+        <div class="av">AK</div>
+        <div style="flex:1"><div class="nm">Arjun Kapoor</div><div class="rl">MD, AK Capital Partners · Hong Kong</div></div>
+        <span class="tagi t-grn">hot</span>
+      </div>
+      <div class="sig">Signal: PE across 12 markets. Delhi origin. Recent post about global capital allocation and personal exposure. Actively thinking about this question.</div>
+      <div class="score-row">
+        <span class="score-pill t-grn">Fit: 9/10</span>
+        <span class="score-pill t-grey">Driver</span>
+      </div>
+      <div class="dm-label" style="margin-top:10px">Connection request</div>
+      <div class="dm">Arjun, PE across 12 markets means you've thought hard about where capital is safe. The personal planning version of that same question is something I work on with HK principals. Worth connecting.</div>
+    </div>
+
+  </div>
+
+  <div class="sec">Full intelligence briefs and 5-message sequences</div>
+
+  <!-- PROSPECT 1 -->
+  <div class="seq-card">
+    <div class="seq-head">
+      <div class="av" style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,.2);color:var(--primary-light);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;">RM</div>
+      <div>
+        <div class="sn">Rajesh Mehta</div>
+        <div class="sr">MD, Mehta Trading International · Hong Kong · Fit 9/10 · Warm</div>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="intel-grid">
+        <div class="intel-block"><div class="ib-label">Strategic fit</div><div class="ib-val">9 / 10</div><div class="ib-note">Role, pain, and timing all align. Long-term HK principal watching the landscape shift.</div></div>
+        <div class="intel-block"><div class="ib-label">Temperature</div><div class="ib-val">Warm</div><div class="ib-note">Posts occasionally about HK business climate. Not actively researching but risk-aware.</div></div>
+        <div class="intel-block"><div class="ib-label">Communication style</div><div class="ib-val">Analytical</div><div class="ib-note">Detail-oriented. Responds to evidence and process, not urgency or emotion.</div></div>
+        <div class="intel-block"><div class="ib-label">Opening strategy</div><div class="ib-val">Peer Opener</div><div class="ib-note">HK professional who understands the landscape without being a salesperson about it.</div></div>
+      </div>
+      <div style="margin-top:12px;background:var(--gray-light);border-radius:8px;padding:10px 12px;">
+        <div class="ib-label" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--gray-text);margin-bottom:4px;">Human hook</div>
+        <div style="font-size:14px;font-style:italic;color:var(--ink);">"You built a trading business over twenty years while HK shifted under your feet."</div>
+      </div>
+      <div style="margin-top:16px;">
+        <div class="msg-block">
+          <div class="msg-label">Message 1 · Connection request</div>
+          <div class="msg-when">300 characters max · one job: get accepted</div>
+          <div class="msg-text">Rajesh, your work in commodities across Asia has been consistent for two decades. I work specifically with HK-based founders thinking about their family's long-term options. Worth connecting.</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 2 · Icebreaker</div>
+          <div class="msg-when">Send after acceptance · zero pitch · one question</div>
+          <div class="msg-text">Rajesh, two decades building a trading business in HK while the landscape changed around you takes a particular kind of clarity. Curious: for someone in your position, is the next chapter still anchored in HK, or are you starting to think about what else makes sense?</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 3 · Value-add follow-up</div>
+          <div class="msg-when">2-3 days if no reply · fresh observation · low-effort question</div>
+          <div class="msg-text">Rajesh, one thing most HK-based founders do not realise: the window for certain investment migration programmes changes with political timelines, not just personal ones. Not a pitch, just something worth knowing sooner rather than later. Are you at the stage where this is something you have actually looked at, or still more of a background thought?</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 4 · The pivot</div>
+          <div class="msg-when">3-4 days if no reply · completely different angle · under 3 sentences</div>
+          <div class="msg-text">Different angle, Rajesh. A lot of the families I work with started this conversation when their children hit university age. Is that a factor for you, or is this more about personal optionality?</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 5 · Clean exit</div>
+          <div class="msg-when">5-7 days if no reply · close with warmth · leave door open</div>
+          <div class="msg-text">Rajesh, I will leave this here. If you ever want an honest conversation about what your specific situation actually allows, not a sales call, just a straight read on your options, I am easy to find. Take care.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROSPECT 2 -->
+  <div class="seq-card">
+    <div class="seq-head">
+      <div class="av" style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,.2);color:var(--primary-light);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;">AG</div>
+      <div>
+        <div class="sn">Amandeep Gill</div>
+        <div class="sr">CEO, AG Export Solutions · Dubai, UAE · Fit 8/10 · Cold</div>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="intel-grid">
+        <div class="intel-block"><div class="ib-label">Strategic fit</div><div class="ib-val">8 / 10</div><div class="ib-note">Cross-border operator. UAE residency in place but citizenship track absent. Classic pre-action profile.</div></div>
+        <div class="intel-block"><div class="ib-label">Temperature</div><div class="ib-val">Cold</div><div class="ib-note">Not active on LinkedIn. Matches ICP on every dimension but no visible timing signal yet.</div></div>
+        <div class="intel-block"><div class="ib-label">Communication style</div><div class="ib-val">Driver</div><div class="ib-note">Decisive. Responds to directness and outcome-focus, not long explanations.</div></div>
+        <div class="intel-block"><div class="ib-label">Opening strategy</div><div class="ib-val">Pattern Interrupt</div><div class="ib-note">Mirror his own logic back to him: he moves goods freely, his family should too.</div></div>
+      </div>
+      <div style="margin-top:12px;background:var(--gray-light);border-radius:8px;padding:10px 12px;">
+        <div class="ib-label" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--gray-text);margin-bottom:4px;">Human hook</div>
+        <div style="font-size:14px;font-style:italic;color:var(--ink);">"Your export network spans three continents but your passport limits where you can go."</div>
+      </div>
+      <div style="margin-top:16px;">
+        <div class="msg-block">
+          <div class="msg-label">Message 1 · Connection request</div>
+          <div class="msg-when">300 characters max</div>
+          <div class="msg-text">Amandeep, your export operation looks like it touches three continents. I work with Dubai-based founders from the subcontinent who are thinking about securing their family's options properly. Happy to connect.</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 2 · Icebreaker</div>
+          <div class="msg-when">After acceptance · zero pitch · one question</div>
+          <div class="msg-text">Amandeep, your business moves goods across borders with no friction. Curious whether your family's personal mobility has had the same attention, or whether that is still sitting on a single passport?</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 3 · Value-add follow-up</div>
+          <div class="msg-when">2-3 days if no reply</div>
+          <div class="msg-text">One thing worth knowing if you are at the stage of thinking about this: UAE residency is a strong base, but it is not a second citizenship. The programmes that give you that are time-sensitive. Are you looking at this actively, or more in the category of something you keep meaning to sort?</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 4 · The pivot</div>
+          <div class="msg-when">3-4 days if no reply</div>
+          <div class="msg-text">Amandeep, a lot of founders I speak to are not thinking about where to move. They are thinking about where their children can go without limitations. Is that closer to where your head is?</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 5 · Clean exit</div>
+          <div class="msg-when">5-7 days if no reply</div>
+          <div class="msg-text">Amandeep, I will not keep following up. If this ever becomes a live question — your situation, your options, an honest read — reach out. The door stays open.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROSPECT 3 -->
+  <div class="seq-card">
+    <div class="seq-head">
+      <div class="av" style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,.2);color:var(--primary-light);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;">PK</div>
+      <div>
+        <div class="sn">Priya Krishnamurthy</div>
+        <div class="sr">Founder, ClearPath Health · London, UK · Fit 7/10 · Warm</div>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="intel-grid">
+        <div class="intel-block"><div class="ib-label">Strategic fit</div><div class="ib-val">7 / 10</div><div class="ib-note">South Indian origin, UK-based founder. Children approaching secondary age is the live trigger.</div></div>
+        <div class="intel-block"><div class="ib-label">Temperature</div><div class="ib-val">Warm</div><div class="ib-note">Active on LinkedIn. Shares content about building independent from institutional systems.</div></div>
+        <div class="intel-block"><div class="ib-label">Communication style</div><div class="ib-val">Expressive</div><div class="ib-note">Values story and community. Responds to shared identity and personal resonance.</div></div>
+        <div class="intel-block"><div class="ib-label">Opening strategy</div><div class="ib-val">Peer Opener</div><div class="ib-note">Reference her post genuinely. She responds to people who paid attention, not people who pitch.</div></div>
+      </div>
+      <div style="margin-top:12px;background:var(--gray-light);border-radius:8px;padding:10px 12px;">
+        <div class="ib-label" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--gray-text);margin-bottom:4px;">Human hook</div>
+        <div style="font-size:14px;font-style:italic;color:var(--ink);">"You left NHS security to build on your own terms. Your family's passport security deserves the same attention."</div>
+      </div>
+      <div style="margin-top:16px;">
+        <div class="msg-block">
+          <div class="msg-label">Message 1 · Connection request</div>
+          <div class="msg-text">Priya, saw your post on building independent healthcare models. That tension between what the system rewards and what actually helps people is one I see in my industry too. Good to connect.</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 2 · Icebreaker</div>
+          <div class="msg-text">Priya, you left NHS security to build something that runs by your own rules. That takes conviction. Curious whether your family's international options have had the same deliberate thought, or whether that has been left to run on default?</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 3 · Value-add follow-up</div>
+          <div class="msg-text">Priya, one thing that surprises a lot of UK-based founders with South Asian roots: the programmes that give you and your children a genuine second base, not just a visa but a real legal foothold, are quieter and more accessible than the marketing suggests. Is this something you have looked into seriously, or more surface level so far?</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 4 · The pivot</div>
+          <div class="msg-text">Different angle. You have built something that serves people navigating a system that was not designed for them. Is part of the motivation here making sure your own family does not face the same limitations your patients do?</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 5 · Clean exit</div>
+          <div class="msg-text">Priya, I will leave it here. If you ever want a conversation that is just about what your situation actually allows, with no agenda attached, you know where to find me.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROSPECT 4 - HOT -->
+  <div class="seq-card" style="border:2px solid var(--primary-light);">
+    <div class="seq-head" style="background:linear-gradient(135deg,#1A1A2E,#2a2a4a);">
+      <div class="av" style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,.25);color:var(--primary-light);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;">VN</div>
+      <div style="flex:1">
+        <div class="sn">Vikram Nair <span style="font-size:11px;background:var(--primary-light);color:#1A1A2E;padding:2px 8px;border-radius:99px;font-weight:800;margin-left:8px;">HOT</span></div>
+        <div class="sr">Co-Founder, Pivotal Fintech · Hong Kong · Fit 8/10 · Hot</div>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="intel-grid">
+        <div class="intel-block"><div class="ib-label">Strategic fit</div><div class="ib-val">8 / 10</div><div class="ib-note">HK fintech founder. Kerala origin. Regulatory uncertainty is the live trigger. Personal planning likely lagging business planning.</div></div>
+        <div class="intel-block"><div class="ib-label">Temperature</div><div class="ib-val" style="color:var(--good)">Hot</div><div class="ib-note">Posted recently about regulatory headwinds. The business and personal question are running in parallel right now.</div></div>
+        <div class="intel-block"><div class="ib-label">Communication style</div><div class="ib-val">Driver</div><div class="ib-note">Fast decisions. Responds to directness, specificity, and confidence. No preamble.</div></div>
+        <div class="intel-block"><div class="ib-label">Opening strategy</div><div class="ib-val">Directness Play</div><div class="ib-note">He posted about it. Reference it directly. He will respect someone who read the post and connected the dots.</div></div>
+      </div>
+      <div style="margin-top:12px;background:var(--gray-light);border-radius:8px;padding:10px 12px;">
+        <div class="ib-label" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--gray-text);margin-bottom:4px;">Human hook</div>
+        <div style="font-size:14px;font-style:italic;color:var(--ink);">"You built a fintech in one of the world's most demanding regulatory environments. The next move is the same calculation."</div>
+      </div>
+      <div style="margin-top:16px;">
+        <div class="msg-block">
+          <div class="msg-label">Message 1 · Connection request</div>
+          <div class="msg-text">Vikram, building a fintech in HK right now requires a particular read on the long game. I work with founders here on the personal planning side of that same question. Good to connect.</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 2 · Icebreaker</div>
+          <div class="msg-text">Vikram, you posted about navigating regulatory headwinds in HK fintech. The business question and the personal question are often running in parallel for founders in your position. Are you thinking about the personal side of the long game too?</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 3 · Value-add follow-up</div>
+          <div class="msg-text">One thing worth knowing specifically for HK fintech founders: the personal timeline for investment migration programmes does not pause while the business timeline plays out. Portugal's programme has a processing window right now that is closing. Worth knowing where you stand before that window narrows further. Are you at the stage of thinking about this?</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 4 · The pivot</div>
+          <div class="msg-text">Vikram, different question. A lot of the founders I work with are not thinking about leaving HK. They want to stay with options. Is that closer to what you are thinking about?</div>
+        </div>
+        <div class="msg-block">
+          <div class="msg-label">Message 5 · Clean exit</div>
+          <div class="msg-text">Vikram, leaving it here. If the personal planning question becomes live, I give straight answers and I have worked inside the system. Easy to find.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROSPECT 5 -->
+  <div class="seq-card">
+    <div class="seq-head">
+      <div class="av" style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,.2);color:var(--primary-light);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;">SP</div>
+      <div>
+        <div class="sn">Sunita Patel</div>
+        <div class="sr">Director, SP Property Holdings · Abu Dhabi, UAE · Fit 8/10 · Warm</div>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="intel-grid">
+        <div class="intel-block"><div class="ib-label">Strategic fit</div><div class="ib-val">8 / 10</div><div class="ib-note">Property portfolio signals planning mindset. UAE residency, Gujarati origin. No citizenship track visible.</div></div>
+        <div class="intel-block"><div class="ib-label">Temperature</div><div class="ib-val">Warm</div><div class="ib-note">Active on LinkedIn. Posts about property investment and family planning topics.</div></div>
+        <div class="intel-block"><div class="ib-label">Communication style</div><div class="ib-val">Analytical</div><div class="ib-note">Likes data and process. Will research before deciding. Give her something to think about, not a reason to act now.</div></div>
+        <div class="intel-block"><div class="ib-label">Opening strategy</div><div class="ib-val">Pattern Interrupt</div><div class="ib-note">She thinks in assets. Frame personal mobility as an asset class she has not yet allocated to.</div></div>
+      </div>
+      <div style="margin-top:12px;background:var(--gray-light);border-radius:8px;padding:10px 12px;">
+        <div class="ib-label" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--gray-text);margin-bottom:4px;">Human hook</div>
+        <div style="font-size:14px;font-style:italic;color:var(--ink);">"Three properties in Dubai but your family's options still sit on one document."</div>
+      </div>
+      <div style="margin-top:16px;">
+        <div class="msg-block"><div class="msg-label">Message 1 · Connection request</div><div class="msg-text">Sunita, a property portfolio across the UAE takes serious discipline to build and manage. I work with principals in the Gulf thinking about securing their family's options beyond a single jurisdiction. Good to connect.</div></div>
+        <div class="msg-block"><div class="msg-label">Message 2 · Icebreaker</div><div class="msg-text">Sunita, three properties in Dubai signals a particular kind of planning mindset. Curious whether that same attention has been applied to your family's personal mobility, or whether the passport question has stayed in the background?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 3 · Value-add follow-up</div><div class="msg-text">One thing that matters for UAE-based South Asian investors thinking about investment migration: source-of-funds documentation for property portfolios is something most programmes ask about carefully, and most advisors address poorly. Getting that right at the start saves months and avoids a record on file. Is this something you are actively looking at, or more exploratory?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 4 · The pivot</div><div class="msg-text">Sunita, a different angle. Are you thinking about this primarily for your own optionality, or is the driver more about what your children inherit in terms of their international position?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 5 · Clean exit</div><div class="msg-text">Sunita, I will not keep reaching out. If you ever want a straight conversation about what your specific profile actually allows, I am here. No follow-up system, no sales funnel, just an honest answer.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROSPECT 6 -->
+  <div class="seq-card">
+    <div class="seq-head">
+      <div class="av" style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,.2);color:var(--primary-light);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;">HS</div>
+      <div>
+        <div class="sn">Harjit Singh</div>
+        <div class="sr">MD, Global Link Logistics · Birmingham, UK · Fit 7/10 · Cold</div>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="intel-grid">
+        <div class="intel-block"><div class="ib-label">Strategic fit</div><div class="ib-val">7 / 10</div><div class="ib-note">UK Punjabi logistics founder. EU Golden Visa window is closing, which is the relevant timing signal.</div></div>
+        <div class="intel-block"><div class="ib-label">Temperature</div><div class="ib-val">Cold</div><div class="ib-note">Not active online. Needs a genuine peer-level approach, not a sales feel.</div></div>
+        <div class="intel-block"><div class="ib-label">Communication style</div><div class="ib-val">Amiable</div><div class="ib-note">Values relationships. Will not respond to pressure. Give him room to come to it himself.</div></div>
+        <div class="intel-block"><div class="ib-label">Opening strategy</div><div class="ib-val">Peer Opener</div><div class="ib-note">Two people who understand how borders work, differently but genuinely. Lead with that.</div></div>
+      </div>
+      <div style="margin-top:12px;background:var(--gray-light);border-radius:8px;padding:10px 12px;">
+        <div class="ib-label" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--gray-text);margin-bottom:4px;">Human hook</div>
+        <div style="font-size:14px;font-style:italic;color:var(--ink);">"You have spent 15 years making sure freight moves freely. Your family should have the same freedom."</div>
+      </div>
+      <div style="margin-top:16px;">
+        <div class="msg-block"><div class="msg-label">Message 1 · Connection request</div><div class="msg-text">Harjit, logistics built across borders gives you a different view of how the world works. I work with UK Punjabi founders thinking about their family's international options properly. Good to connect.</div></div>
+        <div class="msg-block"><div class="msg-label">Message 2 · Icebreaker</div><div class="msg-text">Harjit, you have spent 15 years making sure freight moves freely across borders. Curious whether your family has the same freedom, or whether personal mobility is still sitting on a single travel document?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 3 · Value-add follow-up</div><div class="msg-text">One thing worth knowing for UK South Asian founders: the EU Golden Visa programmes are tightening. Portugal closed its direct investment route, Greece's threshold went up, Malta's queue is long. The options are still there but the window on some of them is narrower than it was 18 months ago. Are you at the stage of looking at this, or still in the category of something to sort eventually?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 4 · The pivot</div><div class="msg-text">Harjit, is there a specific country in mind, or is this more about having options in general — keeping doors open rather than picking a particular door?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 5 · Clean exit</div><div class="msg-text">Harjit, leaving this here. If this becomes a real question — your situation, your options, sorting it properly — reach out. I give straight advice and work personally on every case.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROSPECT 7 - HOT -->
+  <div class="seq-card" style="border:2px solid var(--primary-light);">
+    <div class="seq-head" style="background:linear-gradient(135deg,#1A1A2E,#2a2a4a);">
+      <div class="av" style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,.25);color:var(--primary-light);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;">DS</div>
+      <div style="flex:1">
+        <div class="sn">Deepak Sharma <span style="font-size:11px;background:var(--primary-light);color:#1A1A2E;padding:2px 8px;border-radius:99px;font-weight:800;margin-left:8px;">HOT</span></div>
+        <div class="sr">Principal, Horizon Commodities · Hong Kong · Fit 9/10 · Hot</div>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="intel-grid">
+        <div class="intel-block"><div class="ib-label">Strategic fit</div><div class="ib-val">9 / 10</div><div class="ib-note">Delhi origin, 20+ years in HK commodities. Highest strategic fit in the pack. Risk-aware profile with live timing signal.</div></div>
+        <div class="intel-block"><div class="ib-label">Temperature</div><div class="ib-val" style="color:var(--good)">Hot</div><div class="ib-note">Recent post about HK long-term financial infrastructure reads like someone who has done the analysis. The question is whether personal planning is running at the same pace.</div></div>
+        <div class="intel-block"><div class="ib-label">Communication style</div><div class="ib-val">Analytical</div><div class="ib-note">Will not be rushed. Responds to precision and evidence. Treat him as the expert he is on risk.</div></div>
+        <div class="intel-block"><div class="ib-label">Opening strategy</div><div class="ib-val">Directness Play</div><div class="ib-note">Reference the post. Show you understood what it said. He will respect that far more than a generic opener.</div></div>
+      </div>
+      <div style="margin-top:12px;background:var(--gray-light);border-radius:8px;padding:10px 12px;">
+        <div class="ib-label" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--gray-text);margin-bottom:4px;">Human hook</div>
+        <div style="font-size:14px;font-style:italic;color:var(--ink);">"Twenty years of commodity trading in HK. You understand risk better than most. This is the same calculation."</div>
+      </div>
+      <div style="margin-top:16px;">
+        <div class="msg-block"><div class="msg-label">Message 1 · Connection request</div><div class="msg-text">Deepak, twenty years in commodity trading in HK means you have priced risk through cycles most people only read about. The personal planning version of that calculation is something I work on with principals like you. Worth connecting.</div></div>
+        <div class="msg-block"><div class="msg-label">Message 2 · Icebreaker</div><div class="msg-text">Deepak, your recent post about HK's long-term financial infrastructure read like someone who has already done the risk assessment. Have you applied the same thinking to the personal side — what your family's options look like if the calculus changes?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 3 · Value-add follow-up</div><div class="msg-text">One thing that surprises most HK principals who have thought about this: the process for securing a second residency or citizenship is slower than the risk timeline you are managing. If something shifts significantly, a programme that takes 18 to 24 months does not help you. The people who are prepared started before it felt urgent. Are you at the stage where this is live?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 4 · The pivot</div><div class="msg-text">Deepak, let me try a different angle. A lot of HK principals I speak with do not want to move. They want to know they could. Is that closer to where you are?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 5 · Clean exit</div><div class="msg-text">Deepak, I will leave it there. If you want an honest read on what your specific profile allows, built on two years inside the Hong Kong Immigration Department and six years of personal case work, I am easy to find. Take care.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROSPECT 8 -->
+  <div class="seq-card">
+    <div class="seq-head">
+      <div class="av" style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,.2);color:var(--primary-light);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;">KS</div>
+      <div>
+        <div class="sn">Kavitha Subramaniam</div>
+        <div class="sr">Managing Partner, KS Advisory · Dubai, UAE · Fit 8/10 · Warm</div>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="intel-grid">
+        <div class="intel-block"><div class="ib-label">Strategic fit</div><div class="ib-val">8 / 10</div><div class="ib-note">Children at secondary school age is the live trigger. UAE professional services partner, South Indian origin. Decision timeline likely 12-18 months.</div></div>
+        <div class="intel-block"><div class="ib-label">Temperature</div><div class="ib-val">Warm</div><div class="ib-note">Posts about education and family. The question is emotionally live even if not yet practically active.</div></div>
+        <div class="intel-block"><div class="ib-label">Communication style</div><div class="ib-val">Amiable</div><div class="ib-note">Values relationships and family. Approach from the family angle first, the personal optionality angle second.</div></div>
+        <div class="intel-block"><div class="ib-label">Opening strategy</div><div class="ib-val">Pattern Interrupt</div><div class="ib-note">Reference the education post. Connect the dots she has not yet connected between education planning and residency planning.</div></div>
+      </div>
+      <div style="margin-top:12px;background:var(--gray-light);border-radius:8px;padding:10px 12px;">
+        <div class="ib-label" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--gray-text);margin-bottom:4px;">Human hook</div>
+        <div style="font-size:14px;font-style:italic;color:var(--ink);">"Your children are 14 and 16. The window for the best international options is shorter than most parents realise."</div>
+      </div>
+      <div style="margin-top:16px;">
+        <div class="msg-block"><div class="msg-label">Message 1 · Connection request</div><div class="msg-text">Kavitha, your work in professional services across the Gulf is strong. I work with Dubai-based principals from the subcontinent on a question that often becomes urgent when children approach university age. Good to connect.</div></div>
+        <div class="msg-block"><div class="msg-label">Message 2 · Icebreaker</div><div class="msg-text">Kavitha, saw your post about your children's education journey. When children are in their mid-teens, the window for building the right international options around them is shorter than most parents realise. Is this something you are actively thinking about, or still in the planning-to-plan stage?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 3 · Value-add follow-up</div><div class="msg-text">One thing worth knowing if UK university is part of the picture: certain residency programmes give your children home-fee status, grant eligibility, and placement advantages that international status does not. The difference in cost alone is significant. Getting that in place before they apply changes what is available to them. Are you looking at this now, or waiting until they are closer to application age?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 4 · The pivot</div><div class="msg-text">Kavitha, is the driver here primarily about the children, or is there a personal piece too — your own optionality, a second base, something for you beyond where you are now?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 5 · Clean exit</div><div class="msg-text">Kavitha, I will leave it here. If you ever want a conversation that is genuinely about what your family's specific situation allows, no programme to sell, just an honest read, I am easy to find.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROSPECT 9 -->
+  <div class="seq-card" style="border-left:4px solid var(--warn);">
+    <div class="seq-head" style="background:#5c4200;">
+      <div class="av" style="width:36px;height:36px;border-radius:50%;background:rgba(217,119,6,.2);color:#fbbf24;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;">MB</div>
+      <div style="flex:1">
+        <div class="sn">Manpreet Bains <span style="font-size:11px;background:#fbbf24;color:#5c4200;padding:2px 8px;border-radius:99px;font-weight:800;margin-left:8px;">REVIEW FIRST</span></div>
+        <div class="sr">CEO, The Bains Group · London, UK · Fit 6/10 · Cold</div>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="flag-warn" style="margin-top:0;margin-bottom:14px;">
+        Fit score 6/10. Flagged for your review before sending. Hospitality group source-of-funds documentation (multiple entities, significant cash flows, VAT cycles) is more complex than most investment migration advisors acknowledge upfront. If you are comfortable managing that complexity in the file preparation, proceed. If not, deprioritise this prospect.
+      </div>
+      <div class="intel-grid">
+        <div class="intel-block"><div class="ib-label">Strategic fit</div><div class="ib-val">6 / 10</div><div class="ib-note">UK Punjabi founder. Appetite likely there. Documentation complexity is the risk.</div></div>
+        <div class="intel-block"><div class="ib-label">Temperature</div><div class="ib-val">Cold</div><div class="ib-note">Not active online. Needs peer-level entry, not a formal pitch feel.</div></div>
+        <div class="intel-block"><div class="ib-label">Communication style</div><div class="ib-val">Expressive</div><div class="ib-note">Community-oriented. Built a brand around the family and hospitality story. Respond to that.</div></div>
+        <div class="intel-block"><div class="ib-label">Opening strategy</div><div class="ib-val">Peer Opener</div><div class="ib-note">Acknowledge the business genuinely. Do not lead with immigration, lead with recognition.</div></div>
+      </div>
+      <div style="margin-top:12px;background:var(--gray-light);border-radius:8px;padding:10px 12px;">
+        <div class="ib-label" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--gray-text);margin-bottom:4px;">Human hook</div>
+        <div style="font-size:14px;font-style:italic;color:var(--ink);">"Five restaurants, thirty staff, twenty-two countries you still can not visit without a queue."</div>
+      </div>
+      <div style="margin-top:16px;">
+        <div class="msg-block"><div class="msg-label">Message 1 · Connection request</div><div class="msg-text">Manpreet, five restaurants in London is a serious operation. I work with UK founders from South Asian backgrounds on securing their family's international options properly. Good to connect.</div></div>
+        <div class="msg-block"><div class="msg-label">Message 2 · Icebreaker</div><div class="msg-text">Manpreet, you have built five restaurants in one of the most competitive markets in the world. Curious: with a business that size, have you started thinking about what your personal international options look like — passport-wise, residency-wise — or is that still in the background?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 3 · Value-add follow-up</div><div class="msg-text">One thing worth knowing for UK restaurant group founders thinking about investment migration: the source-of-funds process for hospitality businesses is more complex than most advisors acknowledge upfront. Multiple entities, cash flows, VAT cycles. Getting that preparation right before you apply is what separates a clean file from a delayed one. Is this something you are actively exploring?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 4 · The pivot</div><div class="msg-text">Manpreet, is there a specific country in mind, or is this more about travel freedom — being able to go where you want without the queue your current passport creates?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 5 · Clean exit</div><div class="msg-text">Manpreet, I will leave it here. If this becomes live — you are ready, the documentation is in order, you want a straight read on what is available — reach out. I work personally on every case.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROSPECT 10 - HOT -->
+  <div class="seq-card" style="border:2px solid var(--primary-light);">
+    <div class="seq-head" style="background:linear-gradient(135deg,#1A1A2E,#2a2a4a);">
+      <div class="av" style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,.25);color:var(--primary-light);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0;">AK</div>
+      <div style="flex:1">
+        <div class="sn">Arjun Kapoor <span style="font-size:11px;background:var(--primary-light);color:#1A1A2E;padding:2px 8px;border-radius:99px;font-weight:800;margin-left:8px;">HOT</span></div>
+        <div class="sr">MD, AK Capital Partners · Hong Kong · Fit 9/10 · Hot</div>
+      </div>
+    </div>
+    <div class="seq-body">
+      <div class="intel-grid">
+        <div class="intel-block"><div class="ib-label">Strategic fit</div><div class="ib-val">9 / 10</div><div class="ib-note">PE principal in HK. Delhi origin. Highest sophistication in the pack. Already thinks in portfolio terms. Personal mobility is a gap he can see clearly once framed correctly.</div></div>
+        <div class="intel-block"><div class="ib-label">Temperature</div><div class="ib-val" style="color:var(--good)">Hot</div><div class="ib-note">Posted about global capital allocation and personal exposure. The question is whether he has translated that thinking into action.</div></div>
+        <div class="intel-block"><div class="ib-label">Communication style</div><div class="ib-val">Driver</div><div class="ib-note">Direct, confident, fast. Wastes nothing. Mirror that energy. No wind-up.</div></div>
+        <div class="intel-block"><div class="ib-label">Opening strategy</div><div class="ib-val">Directness Play</div><div class="ib-note">He allocates capital to 12 markets. He understands concentration risk immediately. Use that language and he will understand the framing in one sentence.</div></div>
+      </div>
+      <div style="margin-top:12px;background:var(--gray-light);border-radius:8px;padding:10px 12px;">
+        <div class="ib-label" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--gray-text);margin-bottom:4px;">Human hook</div>
+        <div style="font-size:14px;font-style:italic;color:var(--ink);">"You allocate capital to 12 markets. Your personal mobility allocation is overdue."</div>
+      </div>
+      <div style="margin-top:16px;">
+        <div class="msg-block"><div class="msg-label">Message 1 · Connection request</div><div class="msg-text">Arjun, PE across 12 markets means you have thought hard about where capital is safe. The personal planning version of that same question is something I work on with HK principals. Worth connecting.</div></div>
+        <div class="msg-block"><div class="msg-label">Message 2 · Icebreaker</div><div class="msg-text">Arjun, you allocate capital across 12 markets because concentration risk is something you take seriously. Curious whether your family's personal mobility has had the same analysis, or whether that is still sitting on a single passport?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 3 · Value-add follow-up</div><div class="msg-text">One thing worth knowing for HK PE principals: the processing timelines for the programmes that actually matter — residency by investment, citizenship by investment — are longer than the planning timelines that drive most decisions in your world. The window on some of the better programmes is also tightening. The people who are prepared started the process before it felt urgent. Are you at the stage where this is live?</div></div>
+        <div class="msg-block"><div class="msg-label">Message 4 · The pivot</div><div class="msg-text">Arjun, let me be direct. Do you want a conversation, or are you already working with someone on this? If the former, I will give you a straight read on what your profile actually allows, no programme to sell, no commission. If the latter, I will leave you to it.</div></div>
+        <div class="msg-block"><div class="msg-label">Message 5 · Clean exit</div><div class="msg-text">Arjun, leaving it here. If you want an honest read from someone who has worked inside the system — two years inside the Hong Kong Immigration Department, six years of personal case work — I am easy to find.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">Open with your highest-signal prospect first: <b>Deepak Sharma</b> (Horizon Commodities, HK). He posted about the long-term HK picture, he understands risk professionally, and his profile maps exactly to what GSN does best. Second priority: <b>Arjun Kapoor</b>, who thinks in portfolio terms and will understand the framing in one message. Third: <b>Vikram Nair</b>, whose regulatory headwinds post is a live timing signal. Every DM here is a draft. You read it, you approve it, then you send it.</div>
+
+  <footer>The brain thinks. The team works. You approve. · <b>Built by GSN Consultancy AI Team · Purely Personal</b></footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  window.addEventListener('load',function(){
+    if(!window.gsap)return;
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.ohead',{y:26,opacity:0,scale:.98,duration:.7,ease:'power3.out'});
+    gsap.from('.ohead h1',{y:14,opacity:0,duration:.7,delay:.12,ease:'power3.out'});
+    gsap.from('.card,.stat,.pcard,.seq-card,.notice,.note',{y:20,opacity:0,duration:.55,stagger:.07,ease:'power2.out',scrollTrigger:{trigger:'.doc',start:'top 85%'}});
+    gsap.utils.toArray('.count').forEach(function(el){
+      var to=+el.dataset.to,o={v:0};
+      gsap.to(o,{v:to,duration:1.4,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 92%'},onUpdate:function(){el.textContent=Math.round(o.v).toLocaleString();}});
+    });
+  });
+</script>
+</body>
+</html>
